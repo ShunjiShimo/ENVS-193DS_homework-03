@@ -2,4 +2,46 @@
 title: "ENVS-193DS_homework-03"
 author: "Shunji Shimoyoshi"
 format: pdf
+execute:
+  message: false # use this to make sure messages don't show up
+  warning: false # use this to make sure warnings don't show up
 ---
+
+# Homework Setup
+
+```{r}
+#| label: reading in packages and data
+
+# reading in packages
+library(tidyverse)
+library(here)
+library(janitor)
+library(readxl)
+# creating new object from data set
+kelp <- read_csv(here("data","temp-kelp.csv"))
+bike <- read_csv(here("data","ENVS-193DS-Personal-Data-Project-cont.csv"))
+
+```
+
+# Problem 1. Giant kelp fronds
+
+## a. An appropriate test
+
+The two tests that are appropriate to describe the strength of the relationship between temperature and giant kelp frond elongation rate are a linear model and a correlation test. A linear model will tell us how well temperature can be used to predict kelp frond elongation rate, while correlation can tell us whether these two variables are related to each other. Given that we do not have a specific hypothesis on how temperature affects kelp frond elongation rate, both tests should be used to accurately describe the relationship. 
+
+## b. Create a visualization
+
+## c. Check your assumptions and run your test
+
+## d. Results communication
+
+## e. Test implications
+
+## f. Double check your work
+
+
+
+
+
+
+
