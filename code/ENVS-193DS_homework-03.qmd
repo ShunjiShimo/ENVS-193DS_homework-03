@@ -199,5 +199,39 @@ ggplot(data = bike, # data frame: bike
 
 **Figure 2. Daily Duration of Activities Effect on Time Spent Biking** As duration of day's activities increases, time spent biking also increases. Individual, daily observations are shown as dots on the graph.
 
+# Problem 3. Affective visualization
+
+## a. Describe in words what an affective visualization could look like for your personal data.
+
+## b. Create a sketch of your idea
+
+## c. Make a draft of your visualization
+
+## d. Write an artist statement
+
+## e. Prep your materials to share in class
+
+
+
+
+# Problem 4. Statistical critique
+
+## a. Revisit and summarize
+
+The authors tested the hypothesis that California abalone species are negatively affected by warming ocean temperatures. 
+- Test used: ANOVA (Analysis of Variance)
+- Response Variable(s): Abalone growth, reproductive output, disease, mortality
+- Predictor Variable(s): Temperature, food quantity, food quality
+The authors would interpret a significant result (p < 0.05) as there is a difference in average abalone growth, reproduction, disease, and mortality between the two study species, *H. rufescens* and *H. fulgens*.
+
+![Table 1](D:\ENVS-193DS\Github\ENVS-193DS_homework-03\screenshot1.JPG)
+![Table 1 Extended](D:\ENVS-193DS\Github\ENVS-193DS_homework-03\screenshot2.JPG)
+
+## b. Visual clarity
+
+## c. Aesthetic clarity
+
+## d. Recommendations
+
 
 
