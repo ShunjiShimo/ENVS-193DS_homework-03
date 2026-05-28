@@ -84,26 +84,35 @@ cor.test(kelp$kelp_elong, kelp$temp_c, # variables: kelp elongation rate and tem
 
 ## d. Results communication
 
-To evaluate the strength of the relationship between temperature and giant kelp frond elongation rate, I used a Pearson's correlation (r) test. A correlation test was appropriate for this as I wanted to determine the strength of the relationship between these two variables. 
+To evaluate the strength of the relationship between temperature and giant kelp frond elongation rate, we used a Pearson's correlation (r) test. A correlation test was appropriate for this as we wanted to determine the strength of the relationship between these two variables. 
 
-I found a moderate negative relationship between ocean temperature and giant kelp frond elongation rate (Pearson's r = -0.69, t(30) = -5.12, p < 0.001, $\alpha$ = 0.05).
+We found a moderate negative relationship between ocean temperature and giant kelp frond elongation rate (Pearson's r = -0.69, t(30) = -5.12, p < 0.001, $\alpha$ = 0.05).
 
 ## e. Test implications
 
-From my study, I found that as ocean temperature increases, giant kelp frond elongation rate decreases. I found a moderate negative relationship between ocean temperature and giant kelp frond elongation rate (Pearson's r = -0.69, t(30) = -5.12, p < 0.001, $\alpha$ = 0.05).
+From this study, we found that as ocean temperature increases, giant kelp frond elongation rate decreases. We found a moderate negative relationship between ocean temperature and giant kelp frond elongation rate (Pearson's r = -0.69, t(30) = -5.12, p < 0.001, $\alpha$ = 0.05).
 
 ## f. Double check your work
 
+### Fitting linear model
 
+```{r}
+#| label: kelp linear model
 
+kelp_model <- lm(
+  kelp_elong ~ temp_c, # formula: kelp elongation rate as a function of temperature
+  data = kelp # data frame: kelp
+)
 
+```
 
+### Diagnostics
 
 ```{r}
 #| label: checking assumptions of kelp model
 
-#par(mfrow = c(2, 2))
-#plot(kelp_model)
+par(mfrow = c(2, 2))
+plot(kelp_model)
 
 ```
 
@@ -113,34 +122,19 @@ From my study, I found that as ocean temperature increases, giant kelp frond elo
 
 - Residuals vs Leverage: checking for outliers, no outliers outside dotted lines that would influence model predictions
 
-
-
-
-
-
-
-### Running test
-
-```{r}
-#| label: kelp model
-
-#kelp_model <- lm(
-#  kelp_elong ~ temp_c, # formula: kelp elongation rate as a function of temperature
-#  data = kelp # data frame: kelp
-#)
-
-```
-
 ### Model Summary
 
 ```{r}
 #| label: summary of kelp model
 
 # displaying result of kelp linear model
-#summary(kelp_model)
+summary(kelp_model)
 
 ```
 
+**For each 1°C of ocean temperature increase, we would expect a giant kelp frond elongation rate decrease of 0.43 ± 0.08 (SE) cm/day.**
+
+This result from the linear model would have led me to make the same decision about the null hypothesis. As ocean temperature increases, giant kelp frond elongation rate decreases. The only difference is that the strength of this relationship would have not been known without the correlation test.
 
 
 
