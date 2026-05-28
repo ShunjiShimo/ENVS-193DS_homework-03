@@ -224,14 +224,18 @@ The authors tested the hypothesis that California abalone species are negatively
 - Predictor Variable(s): Temperature, food quantity, food quality
 The authors would interpret a significant result (p < 0.05) as there is a difference in average abalone growth, reproduction, disease, and mortality between the two study species, *H. rufescens* and *H. fulgens*.
 
-![Table 1](D:\ENVS-193DS\Github\ENVS-193DS_homework-03\screenshot1.JPG)
-![Table 1 Extended](D:\ENVS-193DS\Github\ENVS-193DS_homework-03\screenshot2.JPG)
+![Table 1](D:\ENVS-193DS\Github\ENVS-193DS_homework-03\code\screenshot1.JPG)
+![Table 1 Extended](D:\ENVS-193DS\Github\ENVS-193DS_homework-03\code\screenshot2.JPG)
 
 ## b. Visual clarity
 
+The information presented in the table represents the ANOVA test conducted by the authors fairly well. Important information for each response variable (ex. abalone growth, reproductive output, etc.) is clearly shown and organized, such as the degrees of freedom, F-statistic, mean squares, and p-value.
+
 ## c. Aesthetic clarity
+
+Given the numerous response variables for both species of abalone represented in the table, the authors handled the aesthetic clarity very well. Acronyms for variables, such as GBI (gonad bulk indices) are defined in the notes section below the table to help with better understanding. Additionally, grouping together variables such as "length" and "mass" under the larger header "growth" helps the reader understand that these two measures together represent abalone growth in this study. The same is done for "disease and mortality", which groups together all of the measures of abalone diseases.
 
 ## d. Recommendations
 
-
+I would recommend that the authors add the effect size as an additional piece of information to this table. Doing so would further support their findings as they could show how large the difference is between the two abalone species for each response variable.
 
