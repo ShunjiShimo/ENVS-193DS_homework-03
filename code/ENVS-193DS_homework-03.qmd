@@ -86,11 +86,13 @@ cor.test(kelp$kelp_elong, kelp$temp_c, # variables: kelp elongation rate and tem
 
 To evaluate the strength of the relationship between temperature and giant kelp frond elongation rate, I used a Pearson's correlation (r) test. A correlation test was appropriate for this as I wanted to determine the strength of the relationship between these two variables. 
 
-I found a moderate, negative relationship between ocean temperature and giant kelp frond elongation rate (Pearson's r = -0.69, t(30) = -5.12, p < 0.001, $\alpha$ = 0.05).
+I found a moderate negative relationship between ocean temperature and giant kelp frond elongation rate (Pearson's r = -0.69, t(30) = -5.12, p < 0.001, $\alpha$ = 0.05).
 
+## e. Test implications
 
+From my study, I found that as ocean temperature increases, giant kelp frond elongation rate decreases. I found a moderate negative relationship between ocean temperature and giant kelp frond elongation rate (Pearson's r = -0.69, t(30) = -5.12, p < 0.001, $\alpha$ = 0.05).
 
-
+## f. Double check your work
 
 
 
@@ -138,17 +140,6 @@ I found a moderate, negative relationship between ocean temperature and giant ke
 #summary(kelp_model)
 
 ```
-
-## d. Results communication
-
-To evaluate 
-
-
-
-
-## e. Test implications
-
-## f. Double check your work
 
 
 
