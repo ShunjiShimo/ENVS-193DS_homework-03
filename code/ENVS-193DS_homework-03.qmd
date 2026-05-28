@@ -1,5 +1,5 @@
 ---
-title: "ENVS-193DS_homework-03"
+title: "ENVS 193DS Homework 3"
 author: "Shunji Shimoyoshi"
 format: pdf
 execute:
@@ -35,7 +35,7 @@ The two tests that are appropriate to describe the strength of the relationship 
 #| label: visualizing data
 
 # base layer: ggplot
-ggplot(data = kelp,
+ggplot(data = kelp, # data frame: kelp
        # x-axis: temperature
        # y-axis: kelp frond elongation rate
        mapping = aes(x = temp_c,
@@ -111,7 +111,9 @@ kelp_model <- lm(
 ```{r}
 #| label: checking assumptions of kelp model
 
+# display plots in a 2x2 grid
 par(mfrow = c(2, 2))
+# display diagnostic plots
 plot(kelp_model)
 
 ```
@@ -136,7 +138,66 @@ summary(kelp_model)
 
 This result from the linear model would have led me to make the same decision about the null hypothesis. As ocean temperature increases, giant kelp frond elongation rate decreases. The only difference is that the strength of this relationship would have not been known without the correlation test.
 
+# Problem 2. Personal Data
 
+## a. Updating your visualizations
+
+```{r}
+#| label: visualizing personal data project
+
+# base layer: ggplot
+ggplot(data = bike, # data frame: bike
+       # x-axis: weather
+       # y-axis: Duration of bike ride
+       # coloring by weather
+       aes(x = Weather,
+           y = `Duration of bike ride (minutes)`,
+       color = Weather)) +
+  # first layer: boxplot
+  geom_boxplot() +
+ # relabeling the axes, adding title and subtitle
+  labs(x = "Wind Condition", 
+       y = "Duration of bike ride (minutes)",
+       title = "Biking in windy conditions increases the time spend biking",
+       subtitle = "Most recent observation: 5/23/2026") +
+ # custom theme
+  theme_light() +
+  # removing legend
+  theme(legend.position = "none") + 
+  # changing the color
+  scale_color_manual(values = c("calm" = "blue",
+                                "windy" = "red"))
+
+```
+
+```{r}
+#| label: visualizing personal data project 2
+
+# base layer: ggplot
+ggplot(data = bike, # data frame: bike
+       # x-axis: duration of day's activities
+       # y-axis: Duration of bike ride
+       aes(x = `Duration of day's activities (hours)`,
+           y = `Duration of bike ride (minutes)`,)) +
+  # first layer: points
+  geom_point(color = "firebrick") +
+ # relabeling the axes, adding title and subtitle
+  labs(x = "Duration of day's activities (hours)", 
+       y = "Duration of bike ride (minutes)",
+       title = "Daily Duration of Activities Effect on Time Spent Biking",
+       subtitle = "Most recent observation: 5/23/2026") +
+ # custom theme
+  theme_light() +
+  # removing legend
+  theme(legend.position = "none")
+
+```
+
+## b. Captions
+
+**Figure 1. Biking in windy conditions increases the time spend biking** Difference in time spent biking between calm and windy conditions is shown as a boxplot. Median, IQR, errorbars, and outliers are visualized and wind condition type is differentiated based on color. Wind data citation: Weather Underground SBFD Station 1 - KCASANTA4905
+
+**Figure 2. Daily Duration of Activities Effect on Time Spent Biking** As duration of day's activities increases, time spent biking also increases. Individual, daily observations are shown as dots on the graph.
 
 
 
