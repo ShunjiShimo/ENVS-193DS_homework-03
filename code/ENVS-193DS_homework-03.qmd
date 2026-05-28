@@ -31,14 +31,124 @@ The two tests that are appropriate to describe the strength of the relationship 
 
 ## b. Create a visualization
 
+```{r}
+#| label: visualizing data
+
+# base layer: ggplot
+ggplot(data = kelp,
+       # x-axis: temperature
+       # y-axis: kelp frond elongation rate
+       mapping = aes(x = temp_c,
+                     y = kelp_elong)) +
+  # first layer: points to represent individual observations
+  geom_point(color = "blue") + # using custom colors
+  # relabeling axes, adding title
+  labs(x = "Temperature (°C)", 
+       y = expression("Kelp frond elongation rate(cm day"^-1~")")) +
+  # changing theme
+  theme_light()
+
+```
+
 ## c. Check your assumptions and run your test
 
+### Checking assumptions
+
+```{r}
+#| label: kelp qq plot
+
+# base layer: ggplot
+ggplot(data = kelp, # data frame: kelp
+       # y-axis for QQ plot (no x-axis for QQ plot)
+       aes(sample = kelp_elong)) + 
+  # first layer: QQ reference line
+  geom_qq_line(color = "blue") +
+  # second layer: QQ plot
+  geom_qq() +
+  # custom theme
+  theme_light()
+
+```
+
+Based on the initial visualization, we can expect a linear relationship between temperature and kelp frond elongation rate. Both temperature and kelp frond elongation rate are continuous variables. Both variables are normally distributed, based on points roughly following the reference line on the QQ plot. Finally, observations are assumed to be independent.
+
+### Running test
+
+```{r}
+#| label: correlation test for kelp model
+
+cor.test(kelp$kelp_elong, kelp$temp_c, # variables: kelp elongation rate and temperature
+         method = "pearson") # method: pearson's correlation (r)
+
+```
+
 ## d. Results communication
+
+To evaluate the strength of the relationship between temperature and giant kelp frond elongation rate, I used a Pearson's correlation (r) test. A correlation test was appropriate for this as I wanted to determine the strength of the relationship between these two variables. 
+
+I found a moderate, negative relationship between ocean temperature and giant kelp frond elongation rate (Pearson's r = -0.69, t(30) = -5.12, p < 0.001, $\alpha$ = 0.05).
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: checking assumptions of kelp model
+
+#par(mfrow = c(2, 2))
+#plot(kelp_model)
+
+```
+
+- Residuals vs Fitted and Scale-Location: checking homoscedasticity of residuals, residuals seem to have constant variance based on even distribution around the horizontal red line
+
+- Q-Q Residuals: checking distribution of residuals, residual is normally distributed based on points following the dotted line relatively closely
+
+- Residuals vs Leverage: checking for outliers, no outliers outside dotted lines that would influence model predictions
+
+
+
+
+
+
+
+### Running test
+
+```{r}
+#| label: kelp model
+
+#kelp_model <- lm(
+#  kelp_elong ~ temp_c, # formula: kelp elongation rate as a function of temperature
+#  data = kelp # data frame: kelp
+#)
+
+```
+
+### Model Summary
+
+```{r}
+#| label: summary of kelp model
+
+# displaying result of kelp linear model
+#summary(kelp_model)
+
+```
+
+## d. Results communication
+
+To evaluate 
+
+
+
 
 ## e. Test implications
 
 ## f. Double check your work
-
 
 
 
