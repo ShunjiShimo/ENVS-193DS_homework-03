@@ -7,9 +7,9 @@ This repo provides Homework 3 from the ENVS-193DS-2026 organization.
 
 ## Data and file information
 
-The `code` folder includes all code for linear models.
+The `code` folder includes all code and images for homework 3.
 
-The `data` folder includes all data files for linear model code.
+The `data` folder includes all data files for kelp and personal data sets for homework 3.
 
 ## Rendered output
 
