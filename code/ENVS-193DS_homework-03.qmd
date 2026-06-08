@@ -27,7 +27,7 @@ bike <- read_csv(here("data","ENVS-193DS-Personal-Data-Project-cont.csv"))
 
 ## a. An appropriate test
 
-The two tests that are appropriate to describe the strength of the relationship between temperature and giant kelp frond elongation rate are a linear model and a correlation test. A linear model will tell us how well temperature can be used to predict kelp frond elongation rate, while correlation can tell us whether these two variables are related to each other. Given that we do not have a specific hypothesis on how temperature affects kelp frond elongation rate, both tests should be used to accurately describe the relationship. 
+The two tests that are appropriate to describe the strength of the relationship between temperature and giant kelp frond elongation rate are a Pearson's correlation test and a Spearman rank correlation test. These correlation tests can tell us whether these two variables are related to each other. Given that we do not have a specific hypothesis on how temperature affects kelp frond elongation rate, both tests should be used to accurately describe the relationship.
 
 ## b. Create a visualization
 
@@ -55,7 +55,7 @@ ggplot(data = kelp, # data frame: kelp
 ### Checking assumptions
 
 ```{r}
-#| label: kelp qq plot
+#| label: qq plot for kelp elong rate
 
 # base layer: ggplot
 ggplot(data = kelp, # data frame: kelp
@@ -70,12 +70,28 @@ ggplot(data = kelp, # data frame: kelp
 
 ```
 
-Based on the initial visualization, we can expect a linear relationship between temperature and kelp frond elongation rate. Both temperature and kelp frond elongation rate are continuous variables. Both variables are normally distributed, based on points roughly following the reference line on the QQ plot. Finally, observations are assumed to be independent.
+```{r}
+#| label: qq plot for temperature
+
+# base layer: ggplot
+ggplot(data = kelp, # data frame: kelp
+       # y-axis for QQ plot (no x-axis for QQ plot)
+       aes(sample = temp_c)) + 
+  # first layer: QQ reference line
+  geom_qq_line(color = "blue") +
+  # second layer: QQ plot
+  geom_qq() +
+  # custom theme
+  theme_light()
+
+```
+
+Based on the initial visualization, we can expect a linear relationship between temperature and kelp frond elongation rate for Pearson's correlation and a monotonic relationship between the variables for Spearman rank correlation. Both temperature and kelp frond elongation rate are continuous variables. Both variables are normally distributed, based on points roughly following the reference line on the QQ plot. Finally, observations are assumed to be independent.
 
 ### Running test
 
 ```{r}
-#| label: correlation test for kelp model
+#| label: pearsons correlation for kelp model
 
 cor.test(kelp$kelp_elong, kelp$temp_c, # variables: kelp elongation rate and temperature
          method = "pearson") # method: pearson's correlation (r)
@@ -90,53 +106,21 @@ We found a moderate negative relationship between ocean temperature and giant ke
 
 ## e. Test implications
 
-From this study, we found that as ocean temperature increases, giant kelp frond elongation rate decreases. We found a moderate negative relationship between ocean temperature and giant kelp frond elongation rate (Pearson's r = -0.69, t(30) = -5.12, p < 0.001, $\alpha$ = 0.05).
+From this study, we found that as ocean temperature increases, giant kelp frond elongation rate decreases. This means that, in order to protect and help the growth of giant kelp forests, more research and action should be taken to curb global warming of oceans. Preventing the warming of oceans will directly help giant kelp forests continue to grow.
 
 ## f. Double check your work
 
-### Fitting linear model
-
 ```{r}
-#| label: kelp linear model
+#| label: spearman correlation test for kelp model
 
-kelp_model <- lm(
-  kelp_elong ~ temp_c, # formula: kelp elongation rate as a function of temperature
-  data = kelp # data frame: kelp
-)
+cor.test(kelp$kelp_elong, kelp$temp_c, # variables: kelp elongation rate and temperature
+         method = "spearman") # method: spearman rank correlation (rho)
 
 ```
 
-### Diagnostics
+We found a moderate negative relationship between ocean temperature and giant kelp frond elongation rate (Spearman $\rho$ = -0.69, S = 9216, p < 0.001, $\alpha$ = 0.05).
 
-```{r}
-#| label: checking assumptions of kelp model
-
-# display plots in a 2x2 grid
-par(mfrow = c(2, 2))
-# display diagnostic plots
-plot(kelp_model)
-
-```
-
-- Residuals vs Fitted and Scale-Location: checking homoscedasticity of residuals, residuals seem to have constant variance based on even distribution around the horizontal red line
-
-- Q-Q Residuals: checking distribution of residuals, residual is normally distributed based on points following the dotted line relatively closely
-
-- Residuals vs Leverage: checking for outliers, no outliers outside dotted lines that would influence model predictions
-
-### Model Summary
-
-```{r}
-#| label: summary of kelp model
-
-# displaying result of kelp linear model
-summary(kelp_model)
-
-```
-
-**For each 1°C of ocean temperature increase, we would expect a giant kelp frond elongation rate decrease of 0.43 ± 0.08 (SE) cm/day.**
-
-This result from the linear model would have led me to make the same decision about the null hypothesis. As ocean temperature increases, giant kelp frond elongation rate decreases. The only difference is that the strength of this relationship would have not been known without the correlation test.
+Both Pearson's and Spearman rank correlation test results would have led me to the same conclusion: as ocean temperature increases, giant kelp frond elongation rate seems to decrease.
 
 # Problem 2. Personal Data
 
@@ -226,9 +210,13 @@ Google slides presentation with my affective data visualization plan can be view
 ## a. Revisit and summarize
 
 The authors tested the hypothesis that California abalone species are negatively affected by warming ocean temperatures. 
+
 - Test used: ANOVA (Analysis of Variance)
+
 - Response Variable(s): Abalone growth, reproductive output, disease, mortality
+
 - Predictor Variable(s): Temperature, food quantity, food quality
+
 The authors would interpret a significant result (p < 0.05) as there is a difference in average abalone growth, reproduction, disease, and mortality between the two study species, *H. rufescens* and *H. fulgens*.
 
 ![Table 1](D:\ENVS-193DS\Github\ENVS-193DS_homework-03\code\screenshot1.JPG)
